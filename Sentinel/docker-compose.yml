@@ -1,0 +1,21 @@
+version: '3'
+
+networks:
+  middleware-network:
+    driver: bridge
+
+volumes:
+  middleware_data: {}
+
+services:
+  sentinel:
+    image: bladex/sentinel-dashboard
+    container_name: sentinel
+    ports:
+    - 8858:8858
+    volumes:
+    - ./data/sentinel_logs/:/root/logs
+    networks:
+      middleware-network:
+        aliases:
+          - sentinel
