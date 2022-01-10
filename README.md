@@ -9,4 +9,7 @@
 |服务名称|所在文件夹位置|
 |---------|---------|
 |`RocketMQ`|`RockertMQ`|
+|`Nacos`|`Nacos`|
 |`MySQL`|`MySQL`|
+|`Sentinel`|`Sentinel`|
+|`Prometheus-Grafana`|`Prometheus-Grafana`|
