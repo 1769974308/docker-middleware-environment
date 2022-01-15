@@ -16,3 +16,4 @@
 |`ELK`|`ELK`|
 |`Redis`|`Redis`|
 |`Nginx`|`Nginx`|
+|`Rabbitmq`|`Rabbitmq`|
