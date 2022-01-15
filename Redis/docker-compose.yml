@@ -1,0 +1,53 @@
+version: '3'
+
+networks:
+  middleware-network:
+    driver: bridge
+
+volumes:
+  middleware_data: {}
+
+services:
+
+  redis:
+    container_name: redis
+    image: redis:5
+    command: redis-server --appendonly yes --requirepass !1Qaz@2Wsx
+    volumes:
+      - ./data/redis:/data #数据文件挂载
+    ports:
+      - 16379:6379
+    networks:
+      middleware-network:
+        aliases:
+          - redis
+
+  redis-commander:
+    container_name: redis-commander
+    hostname: redis-commander
+    image: rediscommander/redis-commander:latest
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+      - REDIS_PASSWORD=!1Qaz@2Wsx
+      - HTTP_USER=root  #Commander登录名/密码
+      - HTTP_PASSWORD=root
+    ports:
+      - 8082:8081
+    depends_on:
+      - redis
+    networks:
+      middleware-network:
+        aliases:
+          - redisCommander
+
+  redis-exporter:
+    image: oliver006/redis_exporter
+    command: -redis.addr redis://redis:6379
+    ports:
+      - 9121:9121
+    depends_on:
+      - redis
+    networks:
+      middleware-network:
+        aliases:
+          - redisExporter
