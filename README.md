@@ -14,3 +14,5 @@
 |`Sentinel`|`Sentinel`|
 |`Prometheus-Grafana`|`Prometheus-Grafana`|
 |`ELK`|`ELK`|
+|`Redis`|`Redis`|
+|`Nginx`|`Nginx`|
