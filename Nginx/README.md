@@ -8,6 +8,8 @@ Nginx
 |-- README.md
 
 ```
+## 静态资源根目录挂载
+ data>nginx>html目录下放置静态资源
 
 ## 运行结果
 ```
