@@ -1,0 +1,30 @@
+version: '3'
+
+networks:
+  middleware-network:
+    driver: bridge
+
+volumes:
+  middleware_data: {}
+
+services:
+
+  mongo:
+    image: mongo
+    container_name: mongo
+    volumes:
+      - ./data/mongo/db:/data/db #数据文件挂载
+      - ./conf/init/mongo-init.sh:/docker-entrypoint-initdb.d/mongo-init.sh
+    ports:
+      - 27017:27017
+    command: [--auth]
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: "admin"
+      MONGO_INITDB_ROOT_PASSWORD: "admin"
+      MONGO_INITDB_DATABASE: "cnode"
+      MONGO_USERNAME: "cnode"
+      MONGO_PASSWORD: "cnode"
+    networks:
+      middleware-network:
+        aliases:
+          - mongo
