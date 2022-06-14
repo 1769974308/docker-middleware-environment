@@ -20,7 +20,7 @@ services:
       KAFKA_BROKER_ID: 0
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://120.46.151.254:9092 #120.46.151.254 部署机器IP
       KAFKA_CREATE_TOPICS: "kafeidou:2:0"   #kafka启动后初始化一个有2个partition(分区)0个副本名叫kafeidou的topic
-      KAFKA_ZOOKEEPER_CONNECT: 120.46.151.254:2181 #120.46.151.254 部署机器IP
+      KAFKA_ZOOKEEPER_CONNECT: 120.46.151.254:2181 #zookeeper部署机器IP 120.46.151.254
       KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
     networks:
       middleware-network:
