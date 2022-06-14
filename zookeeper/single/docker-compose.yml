@@ -1,0 +1,23 @@
+version: '3'
+
+networks:
+  middleware-network:
+    driver: bridge
+
+volumes:
+  middleware_data: {}
+
+services:
+  zookeeper:
+    image: zookeeper
+    container_name: zookeeper
+    ports:
+    - 2181:2181
+    volumes:
+    - ./conf:/conf
+    environment:
+      ZOO_MY_ID: 1
+    networks:
+      middleware-network:
+        aliases:
+          - zookeeper
