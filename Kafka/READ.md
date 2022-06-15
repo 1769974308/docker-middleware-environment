@@ -43,59 +43,7 @@ ooo
 
 ```
 
-# KafKa 可视化工具 kafka-eagle
-
-1、安装JDK 省略步骤
-
-2、下载 kafka-eagle安装包kafka-eagle-bin-2.0.5.tar.gz：https://github.com/smartloli/kafka-eagle-bin/tags
-
-3、下载完成后将kafka-eagle解压(需要解压两次)到指定目录
-```
-tar -zxvf kafka-eagle-web-2.0.5-bin.tar.gz
-```
-
-4、安装Mysql并添加数据库ke
-
-5、修改配置文件$KE_HOME/conf/system-config.properties，注：主要修改Zookeeper和数据库配置，使用MySQL
-
-```
-kafka.eagle.zk.cluster.alias=cluster1
-cluster1.zk.list=localhost:2181 #zk部署机器ip
-
-
-kafka.eagle.driver=com.mysql.cj.jdbc.Driver
-kafka.eagle.url=jdbc:mysql://localhost:3306/ke?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
-kafka.eagle.username=root
-kafka.eagle.password=root
-
-```
-
-6、命令启动kafka-eagle
-```
-$KE_HOME/bin/ke.sh start
-
-[2022-06-15 09:57:55] INFO: [Job done!]
-Welcome to
-    __ __    ___     ____    __ __    ___            ______    ___    ______    __     ______
-   / //_/   /   |   / __/   / //_/   /   |          / ____/   /   |  / ____/   / /    / ____/
-  / ,<     / /| |  / /_    / ,<     / /| |         / __/     / /| | / / __    / /    / __/   
- / /| |   / ___ | / __/   / /| |   / ___ |        / /___    / ___ |/ /_/ /   / /___ / /___   
-/_/ |_|  /_/  |_|/_/     /_/ |_|  /_/  |_|       /_____/   /_/  |_|\____/   /_____//_____/   
-                                                                                             
-
-Version 2.0.5 -- Copyright 2016-2021
-*******************************************************************
-* Kafka Eagle Service has started success.
-* Welcome, Now you can visit 'http://127.0.0.1:8048'
-* Account:admin ,Password:123456
-*******************************************************************
-* <Usage> ke.sh [start|status|stop|restart|stats] </Usage>
-* <Usage> https://www.kafka-eagle.org/ </Usage>
-*******************************************************************
-
-```
-
-7、启动成功访问:http://ip:8048/,账号密码：admin:123456
-
 
 # KafKa 可视化工具 kafka-map
+
+使用docker方式部署，同一docker-compose.yml与kafka同时部署，访问地址htt://ip:9093 账号密码：admin:admin
