@@ -26,3 +26,15 @@ services:
       middleware-network:
         aliases:
           - kafka
+
+
+  kafka-map:
+    image: dushixiang/kafka-map:latest
+    container_name: kafka-map
+    ports:
+    - 9093:8080
+    volumes:
+      - ./data/kafka-map:/usr/local/kafka-map/data
+    environment:
+      DEFAULT_USERNAME: admin
+      DEFAULT_PASSWORD: admin
