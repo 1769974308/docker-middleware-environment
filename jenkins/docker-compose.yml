@@ -12,8 +12,8 @@ services:
     image: jenkins/jenkins:latest
     container_name: jenkins
     ports:
-    - 10240:8080
-    - 10240:50000
+    - 8181:8080
+    - 8182:50000
     volumes:
     - ./jenkins_home/:/var/jenkins_home
     - /etc/localtime:/etc/localtime #让容器使用和服务器同样的时间设置
