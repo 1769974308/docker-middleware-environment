@@ -1,0 +1,28 @@
+version: '3'
+
+networks:
+  middleware-network:
+    driver: bridge
+
+volumes:
+  middleware_data: {}
+
+services:
+  jenkins:
+    image: jenkins/jenkins:latest
+    container_name: jenkins
+    ports:
+    - 10240:8080
+    - 10240:50000
+    volumes:
+    - ./jenkins_home/:/var/jenkins_home
+    - /etc/localtime:/etc/localtime #让容器使用和服务器同样的时间设置
+    - /usr/bin/docker:/usr/bin/docker
+    - /var/run/docker.sock:/var/run/docker.sock #设置docker
+    - /usr/bin/mv:/usr/bin/mv
+    - /usr/lib/jvm/jdk1.8.0_311/bin:/usr/local/java/jdk1.8.0_311/bin #设置jdk
+    - /usr/local/maven-3.6.3:/usr/local/maven-3.6.3  #设置maven
+    networks:
+      middleware-network:
+        aliases:
+          - jenkins
