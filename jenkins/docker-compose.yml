@@ -15,7 +15,7 @@ services:
     - 8181:8080
     - 8182:50000
     volumes:
-    - ./jenkins_home/:/var/jenkins_home:wr
+    - ./jenkins_home/:/var/jenkins_home
     - /etc/localtime:/etc/localtime #让容器使用和服务器同样的时间设置
     - /usr/bin/docker:/usr/bin/docker
     - /var/run/docker.sock:/var/run/docker.sock #设置docker
