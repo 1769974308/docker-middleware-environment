@@ -9,7 +9,7 @@ volumes:
 
 services:
   jenkins:
-    image: jenkins/jenkins:latest
+    image: jenkins/jenkins:lts
     container_name: jenkins
     ports:
     - 8181:8080
