@@ -9,7 +9,7 @@ volumes:
 
 services:
   jenkins:
-    image: jenkins/jenkins
+    image: jenkinsci/blueocean
     container_name: jenkins
     ports:
     - 8181:8080
@@ -17,16 +17,6 @@ services:
     volumes:
     - ./jenkins_home/:/var/jenkins_home
     - /etc/localtime:/etc/localtime #让容器使用和服务器同样的时间设置
-    - /usr/bin/docker:/usr/bin/docker
-    - /var/run/docker.sock:/var/run/docker.sock #设置docker
-    - /usr/bin/mv:/usr/bin/mv
-    - /usr/lib/jvm/jdk1.8.0_311/bin:/usr/local/java/jdk1.8.0_311/bin #设置jdk
-    - /usr/local/maven-3.6.3:/usr/local/maven-3.6.3  #设置maven
-    - /usr/lib/x86_64-linux-gnu/libltdl.so.7:/usr/lib/x86_64-linux-gnu/libltdl.so.7
-    privileged: true
-    user: root
-    environment:
-      JAVA_OPTS: '-Djava.util.logging.config.file=/var/jenkins_home/log.properties'
     networks:
       middleware-network:
         aliases:
