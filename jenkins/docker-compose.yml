@@ -1,4 +1,4 @@
-version: '3'
+version: '3.1'
 
 networks:
   middleware-network:
@@ -9,14 +9,23 @@ volumes:
 
 services:
   jenkins:
-    image: jenkinsci/blueocean
+    image: jenkins/jenkins:lts
     container_name: jenkins
+    user: root
     ports:
     - 8181:8080
-    - 8182:50000
+    expose:
+      - 8080
+      - 50000
+    privileged: true
     volumes:
     - ./jenkins_home/:/var/jenkins_home
     - /etc/localtime:/etc/localtime #让容器使用和服务器同样的时间设置
+    - /var/run/docker.sock:/var/run/docker.sock
+    - /usr/bin/docker:/usr/bin/docker
+    - /usr/lib/x86_64-linux-gnu/libltdl.so.7:/usr/lib/x86_64-linux-gnu/libltdl.so.7
+    environment:
+      - JAVA_OPTS='-Djava.util.logging.config.file=/var/jenkins_home/log.properties'
     networks:
       middleware-network:
         aliases:
