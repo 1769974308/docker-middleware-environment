@@ -6,7 +6,10 @@
 # 该脚本使用系统kill命令来强制终止指定的java程序进程。
 # 所以在杀死进程前，可能会造成数据丢失或数据不完整。如果必须要考虑到这类情况，则需要改写此脚本，
 #
-#
+# yum安装jdk
+# 执行命令yum -y list java*查看可安装java版本
+# 执行命令yum install -y java-1.8.0-openjdk-devel.x86_64。执行完后会看见控制台刷出很多输出。耐心等待至自动安装完成
+# 输入java -version查看已安装的jdk版本
 # 根据实际情况来修改以下配置信息 ##################################
 
 # JAVA应用程序的名称
@@ -15,8 +18,6 @@ APP_NAME=edu-api
 SERVER_PORT=9999
 # JAVA应用环境
 SERVER_ENV='dev'
-# jar包存放路径
-JAR_PATH='/home/service-jar/edu-api'
 # jar包名称
 JAR_NAME='teaching-open-2.7.0.jar'
 # PID 代表是PID文件
