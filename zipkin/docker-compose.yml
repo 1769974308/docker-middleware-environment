@@ -1,0 +1,31 @@
+version: '3'
+
+networks:
+  middleware-network:
+    driver: bridge
+
+volumes:
+  middleware_data: {}
+
+services:
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    ports:
+    - 9411:9411
+    environment:
+      - STORAGE_TYPE=mysql
+      - MYSQL_DB=shop_zipkin
+      - MYSQL_USER=root
+      - MYSQL_PASS=root
+      - MYSQL_HOST=120.46.151.254
+      - MYSQL_TCP_PORT=13306
+      #- RABBIT_ADDRESSES=192.168.1.81:5672
+      #- RABBIT_USER=guest
+      #- RABBIT_PASSWORD=guest
+      #- RABBIT_QUEUE=zipkin
+      #- RABBIT_VIRTUAL_HOST=/zipkin
+    networks:
+      middleware-network:
+        aliases:
+          - zipkin
